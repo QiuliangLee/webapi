@@ -1,6 +1,6 @@
 package com.bocft.bocpet.webapi.shiro.custom;
 
-import com.alibaba.fastjson.JSONObject;
+import cn.hutool.json.JSONUtil;
 import com.bocft.bocpet.webapi.common.enums.ResultCodeEnum;
 import com.bocft.bocpet.webapi.common.pojo.Result;
 import org.apache.shiro.web.filter.authc.FormAuthenticationFilter;
@@ -55,7 +55,7 @@ public class CustomAuthenticationFilter extends FormAuthenticationFilter {
                 resp.setStatus(HttpStatus.UNAUTHORIZED.value());
                 Result result = Result.err(ResultCodeEnum.UNAUTHENTICATED);
                 PrintWriter out = resp.getWriter();
-                out.println(JSONObject.toJSONString(result));
+                out.println(JSONUtil.toJsonStr(result));
                 out.flush();
                 out.close();
                 return false;

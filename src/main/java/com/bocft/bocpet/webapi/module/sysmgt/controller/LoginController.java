@@ -1,7 +1,7 @@
 package com.bocft.bocpet.webapi.module.sysmgt.controller;
 
 import cn.hutool.core.date.DateUtil;
-import com.alibaba.fastjson.JSONObject;
+import cn.hutool.json.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.bocft.bocpet.webapi.common.constant.SysConfigContextHolder;
 import com.bocft.bocpet.webapi.common.enums.ResultCodeEnum;
@@ -55,9 +55,9 @@ public class LoginController {
     @PostMapping("/login")
     public Result login(@RequestBody JSONObject request) {
         Subject currentUser = SecurityUtils.getSubject();
-        String username = request.getString("authId");
+        String username = request.getStr("authId");
         //密码解密
-        String password = AESUtil.desEncrypt(request.getString("credential"), secretKey, secretIv);
+        String password = AESUtil.desEncrypt(request.getStr("credential"), secretKey, secretIv);
         try {
             //登录
             currentUser.login(new UsernamePasswordToken(username, password));
@@ -109,9 +109,9 @@ public class LoginController {
     @PostMapping("/loginByPhone")
     public Result loginByPhone(@RequestBody JSONObject request) {
         Subject currentUser = SecurityUtils.getSubject();
-        String phone = request.getString("authId");
-        String code = request.getString("credential");
-        String userType = request.getString("userType");
+        String phone = request.getStr("authId");
+        String code = request.getStr("credential");
+        String userType = request.getStr("userType");
         try {
             CaptchaUtils.checkCode(SmsTypeEnum.SIGN_IN.sessionPrefix + phone, code);
         } catch (Exception e) {

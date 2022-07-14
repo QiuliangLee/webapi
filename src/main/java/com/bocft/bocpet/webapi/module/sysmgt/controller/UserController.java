@@ -2,8 +2,8 @@ package com.bocft.bocpet.webapi.module.sysmgt.controller;
 
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.util.StrUtil;
-import com.alibaba.fastjson.JSONArray;
-import com.alibaba.fastjson.JSONObject;
+import cn.hutool.json.JSONArray;
+import cn.hutool.json.JSONObject;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.bocft.bocpet.webapi.common.annotation.OperLog;
 import com.bocft.bocpet.webapi.common.enums.ResultCodeEnum;
@@ -95,9 +95,9 @@ public class UserController {
 
     @PutMapping("/updatePwd")
     Result updatePwd(@RequestBody JSONObject request) {
-        Integer uid = request.getInteger("uid");
-        String originPwd = AESUtil.desEncrypt(request.getString("originPwd"), secretKey, secretIv);
-        String newPwd = AESUtil.desEncrypt(request.getString("newPwd"), secretKey, secretIv);
+        Integer uid = request.getInt("uid");
+        String originPwd = AESUtil.desEncrypt(request.getStr("originPwd"), secretKey, secretIv);
+        String newPwd = AESUtil.desEncrypt(request.getStr("newPwd"), secretKey, secretIv);
         if (StrUtil.isEmpty(newPwd)) {
             return Result.err(-1, "新密码不能为空");
         }
@@ -134,8 +134,8 @@ public class UserController {
     Result updateUserRole(@RequestBody JSONObject request) {
         JSONArray newUserRoles = request.getJSONArray("newUserRoles");
         JSONArray delUserRoles = request.getJSONArray("delUserRoles");
-        List<UserRole> newUserRoleList = newUserRoles.toJavaList(UserRole.class);
-        List<UserRole> delUserRoleList = delUserRoles.toJavaList(UserRole.class);
+        List<UserRole> newUserRoleList = newUserRoles.toList(UserRole.class);
+        List<UserRole> delUserRoleList = delUserRoles.toList(UserRole.class);
         userService.updateUserRole(newUserRoleList, delUserRoleList);
         return Result.suc();
     }

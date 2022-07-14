@@ -1,6 +1,6 @@
 package com.bocft.bocpet.webapi.common.aop;
 
-import com.alibaba.fastjson.JSON;
+import cn.hutool.json.JSONUtil;
 import com.bocft.bocpet.webapi.common.annotation.OperLog;
 import com.bocft.bocpet.webapi.common.util.IpUtils;
 import com.bocft.bocpet.webapi.common.util.UserUtils;
@@ -101,10 +101,10 @@ public class OperLogAspect {
             // 请求的参数
             Map<String, String> rtnMap = converMap(request.getParameterMap());
             // 将参数所在的数组转换成json
-            String params = JSON.toJSONString(rtnMap);
+            String params = JSONUtil.toJsonStr(rtnMap);
 
             operlog.setOperRequParam(params); // 请求参数
-            operlog.setOperRespParam(JSON.toJSONString(keys)); // 返回结果
+            operlog.setOperRespParam(JSONUtil.toJsonStr(keys)); // 返回结果
             operlog.setOperUserId(UserUtils.getCurrentUserId()); // 请求用户ID
             operlog.setOperUserName(UserUtils.getCurrentUserName()); // 请求用户名称
             operlog.setOperIp(IpUtils.getIpAddr(request)); // 请求IP
@@ -145,7 +145,7 @@ public class OperLogAspect {
             // 请求的参数
             Map<String, String> rtnMap = converMap(request.getParameterMap());
             // 将参数所在的数组转换成json
-            String params = JSON.toJSONString(rtnMap);
+            String params = JSONUtil.toJsonStr(rtnMap);
             excepLog.setExcRequParam(params); // 请求参数
             excepLog.setOperMethod(methodName); // 请求方法名
             excepLog.setExcName(e.getClass().getName()); // 异常名称

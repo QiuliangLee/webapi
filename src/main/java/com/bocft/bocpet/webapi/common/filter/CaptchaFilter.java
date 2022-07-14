@@ -1,7 +1,7 @@
 package com.bocft.bocpet.webapi.common.filter;
 
 import cn.hutool.core.util.StrUtil;
-import com.alibaba.fastjson.JSONObject;
+import cn.hutool.json.JSONUtil;
 import com.bocft.bocpet.webapi.common.pojo.Result;
 import com.bocft.bocpet.webapi.common.util.CaptchaUtils;
 import org.springframework.http.HttpStatus;
@@ -45,7 +45,7 @@ public class CaptchaFilter implements Filter {
             response.setCharacterEncoding("UTF-8");
             response.setStatus(HttpStatus.OK.value());
             PrintWriter out = response.getWriter();
-            out.println(JSONObject.toJSONString(result));
+            out.println(JSONUtil.toJsonStr(result));
             out.flush();
             out.close();
         } else {
