@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bocft.bocpet.webapi.module.sysmgt.mapper.RoleMapper">
+
+    <select id="selectByUid" parameterType="Integer" resultType="com.bocft.bocpet.webapi.module.sysmgt.entity.Role">
+        select rid, rname, rdesc, rval, created, updated ,deletable
+        from web_role r,
+             web_user_role ur
+        WHERE r.rid = ur.role_id
+          AND ur.user_id = #{uid}
+    </select>
+</mapper>

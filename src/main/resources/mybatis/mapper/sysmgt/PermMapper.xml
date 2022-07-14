@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bocft.bocpet.webapi.module.sysmgt.mapper.PermMapper">
+
+    <select id="selectByUid" resultType="com.bocft.bocpet.webapi.module.sysmgt.entity.Perm">
+     SELECT distinct p.pid, p.parent_id, p.pname, p.ptype, p.pval, p.url, p.created, p.updated
+     FROM
+        web_perm p,
+        web_role_perm rp,
+        web_user_role ur
+     WHERE
+        p.pid = rp.perm_id
+        AND ur.role_id = rp.role_id
+        AND ur.user_id = #{uid}
+     ORDER BY p.pid
+    </select>
+    <select id="selectByRid" resultType="com.bocft.bocpet.webapi.module.sysmgt.entity.Perm">
+        SELECT DISTINCT p.pid,
+                        p.parent_id,
+                        p.pname,
+                        p.ptype,
+                        p.pval,
+                        p.url,
+                        p.created,
+                        p.updated
+        FROM web_perm p,
+             web_role_perm rp
+        WHERE p.pid = rp.perm_id
+          AND rp.role_id = #{rid}
+        ORDER BY p.pid
+    </select>
+</mapper>
