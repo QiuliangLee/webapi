@@ -1,14 +1,17 @@
 package com.bocft.bocpet.webapi.module.petmgt.controller;
 
+import com.bocft.bocpet.webapi.common.annotation.OperLog;
 import com.bocft.bocpet.webapi.module.petmgt.entity.Pet;
 import com.bocft.bocpet.webapi.module.petmgt.service.PetService;
 import com.bocft.bocpet.webapi.common.pojo.Result;
+import com.bocft.bocpet.webapi.module.sysmgt.entity.UserRole;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
+import java.util.*;
 
 /**
  * @author Lucas
@@ -20,6 +23,12 @@ import java.util.List;
 public class PetController {
     @Autowired
     PetService petService;
+
+    @RequestMapping("/addPet")
+    Result addPet(Pet pet) {
+        petService.addPet(pet);
+        return Result.suc();
+    }
 
     @GetMapping("/getList")
     Result getPetList() {

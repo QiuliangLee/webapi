@@ -21,4 +21,9 @@ public class PetServiceImpl implements PetService {
     public List<Pet> queryAllPets() {
         return petMapper.selectAllPets();
     }
+
+    @Override
+    public int addPet(Pet pet) {
+        return petMapper.insertPet(pet);
+    }
 }

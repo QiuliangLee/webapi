@@ -15,7 +15,7 @@ import java.util.List;
 public interface PetMapper {
 //    int deleteById(String id);
 //
-//    int insertPet(Pet pet);
+    int insertPet(Pet pet);
 //
 //    Pet selectById(String id);
 //
