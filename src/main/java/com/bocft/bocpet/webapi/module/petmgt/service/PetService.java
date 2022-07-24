@@ -10,4 +10,7 @@ import java.util.List;
  */
 public interface PetService {
     List<Pet> queryAllPets();
+    List<Pet> quearyPetsByTypeAndGender(String type, String gender);
+    int addPet(Pet pet);
+    int updateisadopt(String id);
 }

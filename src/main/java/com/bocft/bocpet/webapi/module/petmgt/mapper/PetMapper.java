@@ -2,6 +2,7 @@ package com.bocft.bocpet.webapi.module.petmgt.mapper;
 
 import com.bocft.bocpet.webapi.module.petmgt.entity.Pet;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -13,9 +14,11 @@ import java.util.List;
 @Repository
 @Mapper
 public interface PetMapper {
-//    int deleteById(String id);
+    //    int deleteById(String id);
 //
-//    int insertPet(Pet pet);
+    int insertPet(Pet pet);
+
+    Pet selectPetById(Integer id);
 //
 //    Pet selectById(String id);
 //
@@ -27,4 +30,8 @@ public interface PetMapper {
      * @return
      */
     List<Pet> selectAllPets();
+
+    List<Pet> selectByTypeAndGender(@Param("type") String type, @Param("gender") String gender);
+
+    int updateisadopt(String id);
 }

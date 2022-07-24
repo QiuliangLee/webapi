@@ -21,4 +21,20 @@ public class PetServiceImpl implements PetService {
     public List<Pet> queryAllPets() {
         return petMapper.selectAllPets();
     }
+
+    @Override
+    public List<Pet> quearyPetsByTypeAndGender(String type, String gender) {
+        return petMapper.selectByTypeAndGender(type, gender);
+    }
+
+    @Override
+    public int addPet(Pet pet) {
+        return petMapper.insertPet(pet);
+    }
+
+    @Override
+    public int updateisadopt(String id) {
+        return petMapper.updateisadopt(id);
+    }
+
 }

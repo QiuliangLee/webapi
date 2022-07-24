@@ -203,6 +203,10 @@
             <artifactId>aliyun-java-sdk-dysmsapi</artifactId>
             <version>${aliyun.java.sdk.dysmsapi.version}</version>
         </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
