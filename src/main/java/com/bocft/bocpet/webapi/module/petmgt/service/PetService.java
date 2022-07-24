@@ -11,4 +11,5 @@ import java.util.List;
 public interface PetService {
     List<Pet> queryAllPets();
     int addPet(Pet pet);
+    int selectById(Integer id);
 }

@@ -13,9 +13,11 @@ import java.util.List;
 @Repository
 @Mapper
 public interface PetMapper {
-//    int deleteById(String id);
+    //    int deleteById(String id);
 //
     int insertPet(Pet pet);
+
+    Pet selectPetById(Integer id);
 //
 //    Pet selectById(String id);
 //

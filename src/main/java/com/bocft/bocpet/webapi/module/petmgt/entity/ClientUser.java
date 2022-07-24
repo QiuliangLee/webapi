@@ -20,5 +20,5 @@ public class ClientUser implements Serializable {
     protected String name;
     protected String phone;
     protected String address;
-    protected Pet pet;
+    protected String pet;//pet的主键值
 }

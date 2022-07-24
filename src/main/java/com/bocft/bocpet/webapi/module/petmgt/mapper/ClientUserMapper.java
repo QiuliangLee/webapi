@@ -1,5 +1,6 @@
 package com.bocft.bocpet.webapi.module.petmgt.mapper;
 
+import com.bocft.bocpet.webapi.module.petmgt.entity.ClientUser;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
@@ -10,5 +11,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 @Mapper
 public interface ClientUserMapper {
-
+    int insertClientUser(ClientUser clientUser);
 }

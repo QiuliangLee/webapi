@@ -23,6 +23,9 @@
         <include refid="Base_Column_List"/>
         from pet
     </select>
+    <select id="selectPetById" resultType="com.bocft.bocpet.webapi.module.petmgt.entity.Pet">
+        select <include refid="Base_Column_List" /> from pet where id=#{id}
+    </select>
     <insert id="insertPet" parameterType="com.bocft.bocpet.webapi.module.petmgt.entity.Pet">
     insert into pet (id,name,gender,age,weight,birth_day,create_time,health_info)
     values (#{id,jdbcType=CHAR}, #{name,jdbcType=CHAR}, #{gender,jdbcType=VARCHAR}, #{age,jdbcType=VARCHAR},

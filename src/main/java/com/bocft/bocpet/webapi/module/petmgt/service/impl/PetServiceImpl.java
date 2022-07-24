@@ -26,4 +26,10 @@ public class PetServiceImpl implements PetService {
     public int addPet(Pet pet) {
         return petMapper.insertPet(pet);
     }
+
+    @Override
+    public int selectById(Integer id) {
+        Pet pet = petMapper.selectPetById(id);
+        return 100;
+    }
 }

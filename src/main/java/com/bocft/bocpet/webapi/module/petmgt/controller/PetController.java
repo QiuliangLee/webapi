@@ -30,7 +30,7 @@ public class PetController {
         return Result.suc();
     }
 
-    @GetMapping("/getList")
+    @RequestMapping("/getList")
     Result getPetList() {
         List<Pet> pets = petService.queryAllPets();
         return Result.suc().putData("list", pets)
