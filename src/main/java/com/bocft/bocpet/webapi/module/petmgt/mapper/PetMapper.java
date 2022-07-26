@@ -2,6 +2,7 @@ package com.bocft.bocpet.webapi.module.petmgt.mapper;
 
 import com.bocft.bocpet.webapi.module.petmgt.entity.Pet;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -29,4 +30,8 @@ public interface PetMapper {
      * @return
      */
     List<Pet> selectAllPets();
+
+    List<Pet> selectByTypeAndGender(@Param("type") String type, @Param("gender") String gender);
+
+    int updateIs_adopt(String id);
 }

@@ -25,4 +25,7 @@ public class Pet implements Serializable {
     protected String birth_day;
     protected String create_time;
     protected String health_info;
+    protected String type;
+    protected String image;
+    protected String isadopt;
 }

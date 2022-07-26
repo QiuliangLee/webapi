@@ -4,18 +4,21 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.bocft.bocpet.webapi.module.petmgt.mapper.PetMapper">
     <resultMap id="BaseResultMap" type="com.bocft.bocpet.webapi.module.petmgt.entity.Pet">
-        <id column="id" property="id" jdbcType="CHAR"/>
+        <id column="id" property="id" jdbcType="VARCHAR"/>
         <result column="name" property="name" jdbcType="VARCHAR"/>
         <result column="desc" property="desc" jdbcType="VARCHAR"/>
         <result column="gender" property="gender" jdbcType="VARCHAR"/>
+        <result column="type" property="type" jdbcType="VARCHAR"/>
+        <result column="image" property="image" jdbcType="VARCHAR"/>
         <result column="age" property="age" jdbcType="VARCHAR"/>
         <result column="weight" property="weight" jdbcType="CHAR"/>
         <result column="birth_day" property="birth_day" jdbcType="CHAR"/>
         <result column="create_time" property="create_time" jdbcType="CHAR"/>
         <result column="health_info" property="health_info" jdbcType="VARCHAR"/>
+        <result column="isadopt" property="isadopt" jdbcType="VARCHAR"/>
     </resultMap>
     <sql id="Base_Column_List">
-        id,name,gender,age,weight,birth_day,create_time,health_info
+        id,name,gender,age,weight,birth_day,create_time,health_info, type,image,is_adopt
     </sql>
 
     <select id="selectAllPets" resultMap="BaseResultMap">
@@ -32,4 +35,10 @@
       #{weight,jdbcType=CHAR}, #{birth_day,jdbcType=CHAR}, #{create_time,jdbcType=VARCHAR},
       #{health_info,jdbcType=VARCHAR})
   </insert>
+    <select id="selectByTypeAndGender" resultMap="BaseResultMap">
+        select <include refid="Base_Column_List" /> from pet where type=#{type} and gender=#{gender}
+    </select>
+    <update id="updateIs_adopt" >
+        update pet set isadopt=1 where id=#{id}
+    </update>
 </mapper>
