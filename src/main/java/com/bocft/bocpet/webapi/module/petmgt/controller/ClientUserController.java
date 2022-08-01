@@ -20,4 +20,5 @@ public class ClientUserController {
     public int insertClientUser(ClientUser clientUser) {
         return clientUserService.insertClientUser(clientUser);
     }
+
 }

@@ -6,6 +6,7 @@ import com.bocft.bocpet.webapi.module.petmgt.entity.Pet;
 import com.bocft.bocpet.webapi.module.petmgt.service.PetService;
 import com.bocft.bocpet.webapi.common.pojo.Result;
 import com.bocft.bocpet.webapi.module.sysmgt.entity.UserRole;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -54,7 +55,7 @@ public class PetController {
     }
 
     /**
-     * 根据类型和性别获取宠物
+     * 根据类型和性别获取未被领养的宠物
      *
      * @param type
      * @param gender
@@ -67,10 +68,17 @@ public class PetController {
                 .putData("total", pets.size());
     }
 
-    @RequestMapping("updatePetByIs_adopt")
-    Result updatePetByIs_adopt(String id) {
-        petService.updateIs_adopt(id);
+    /**
+     * 领养后更改领养状态
+     *
+     * @param id
+     * @return
+     */
+    @RequestMapping("updatePetByisadopt")
+    Result updatePetByisadopt(String id) {
+        petService.updateisadopt(id);
         return Result.suc();
     }
+
 
 }

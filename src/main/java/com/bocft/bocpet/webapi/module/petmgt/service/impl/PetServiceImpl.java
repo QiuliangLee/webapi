@@ -33,8 +33,8 @@ public class PetServiceImpl implements PetService {
     }
 
     @Override
-    public int updateIs_adopt(String id) {
-        return petMapper.updateIs_adopt(id);
+    public int updateisadopt(String id) {
+        return petMapper.updateisadopt(id);
     }
 
 }

@@ -33,5 +33,5 @@ public interface PetMapper {
 
     List<Pet> selectByTypeAndGender(@Param("type") String type, @Param("gender") String gender);
 
-    int updateIs_adopt(String id);
+    int updateisadopt(String id);
 }

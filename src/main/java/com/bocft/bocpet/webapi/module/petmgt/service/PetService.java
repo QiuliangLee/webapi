@@ -12,5 +12,5 @@ public interface PetService {
     List<Pet> queryAllPets();
     List<Pet> quearyPetsByTypeAndGender(String type, String gender);
     int addPet(Pet pet);
-    int updateIs_adopt(String id);
+    int updateisadopt(String id);
 }

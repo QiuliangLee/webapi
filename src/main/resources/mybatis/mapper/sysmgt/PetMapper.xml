@@ -18,16 +18,19 @@
         <result column="isadopt" property="isadopt" jdbcType="VARCHAR"/>
     </resultMap>
     <sql id="Base_Column_List">
-        id,name,gender,age,weight,birth_day,create_time,health_info, type,image,is_adopt
+        id,name,gender,age,weight,birth_day,create_time,health_info, type,image,isadopt
     </sql>
 
     <select id="selectAllPets" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
         from pet
+        where isadopt='1'
     </select>
     <select id="selectPetById" resultType="com.bocft.bocpet.webapi.module.petmgt.entity.Pet">
-        select <include refid="Base_Column_List" /> from pet where id=#{id}
+        select
+        <include refid="Base_Column_List"/>
+        from pet where id=#{id}
     </select>
     <insert id="insertPet" parameterType="com.bocft.bocpet.webapi.module.petmgt.entity.Pet">
     insert into pet (id,name,gender,age,weight,birth_day,create_time,health_info)
@@ -36,9 +39,12 @@
       #{health_info,jdbcType=VARCHAR})
   </insert>
     <select id="selectByTypeAndGender" resultMap="BaseResultMap">
-        select <include refid="Base_Column_List" /> from pet where type=#{type} and gender=#{gender}
+        select
+        <include refid="Base_Column_List"/>
+        from pet where type=#{type} and gender=#{gender}
+        and isadopt='1'
     </select>
-    <update id="updateIs_adopt" >
-        update pet set isadopt=1 where id=#{id}
+    <update id="updateisadopt">
+        update pet set isadopt='0' where id=#{id}
     </update>
 </mapper>

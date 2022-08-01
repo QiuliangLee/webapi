@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bocft.bocpet.webapi.module.petmgt.mapper.InsuranceMapper">
+    <resultMap id="BaseResultMap" type="com.bocft.bocpet.webapi.module.petmgt.entity.Insurance">
+        <id column="id" property="id" jdbcType="VARCHAR"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="desc" property="desc" jdbcType="VARCHAR"/>
+        <result column="price" property="price" jdbcType="VARCHAR"/>
+        <result column="info" property="info" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id,name,desc,price,info
+    </sql>
+
+    <select id="selectInsuranceList" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from insurance
+    </select>
+</mapper>
