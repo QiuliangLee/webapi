@@ -108,10 +108,10 @@ Image
 请求参数：id，宠物逐渐
 返回参数：无
 
-2	用户相关
-2.1	添加用户
-请求地址：get   /clientUser/insertClientUser
-请求参数
+### 2	用户相关
+### 2.1	添加用户
+ **请求地址：** get   /clientUser/insertClientUser
+ **请求参数** 
 字段	说明	类型	备注	是否必填
 id
 	宠物主键	String		否
@@ -125,11 +125,17 @@ pet
 	宠物id	String		否
 
  **二、金融服务-保险服务** 
+
  **接口功能：** 查询保险
+
  **URL：** http://172.26.160.2:9876/insurance/getInsuranceList
+
  **支持格式：** 
+
  **HTTP请求方式：** GET
+
  **请求参数    ** 
+
 | 参数 | 必选 | 类型 | 说明 |
 |----|----|----|----|
  **返回字段** 
@@ -145,48 +151,5 @@ pet
 | type    | String | 保险类型，0-推荐，1-宠物，2-成人，3-少儿 |
 返回结果
 
-{
-    "status": "suc",
-    "code": 0,
-    "message": "",
-    "data": {
-        "total": 3,
-        "list": [
-            {
-                "id": "10",
-                "name": "中银全家保险综合保险",
-                "desc": "一人投保三代收益",
-                "price": "599",
-                "feature": null,
-                "image": null,
-                "tag": "全家保障",
-                "info": null,
-                "type": "0"
-            },
-            {
-                "id": "11",
-                "name": "中银-金鹿航空救援“极·致”计划",
-                "desc": "人身意外保险金额最高达2500万元",
-                "price": "100",
-                "feature": null,
-                "image": null,
-                "tag": "全家保障",
-                "info": null,
-                "type": "0"
-            },
-            {
-                "id": "12",
-                "name": "中银爱宠保险",
-                "desc": "为宠物提供健康保障",
-                "price": "399",
-                "feature": null,
-                "image": null,
-                "tag": "宠物保障",
-                "info": null,
-                "type": "0"
-            }
-        ]
-    }
-}
-
+![输入图片说明](image.png)
 
