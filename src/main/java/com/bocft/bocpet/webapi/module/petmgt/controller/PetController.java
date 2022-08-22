@@ -26,15 +26,9 @@ public class PetController {
     @Autowired
     PetService petService;
 
-    /**
-     * 增加宠物
-     *
-     * @param pet
-     * @return
-     */
-    @RequestMapping("/addPet")
-    Result addPet(Pet pet) {
-        int success = petService.addPet(pet);
+    @RequestMapping("/insert")
+    Result insert(Pet pet) {
+        int success = petService.insert(pet);
         if (success == 1) {
             return Result.suc().putData("添加成功", null);
         } else {
@@ -42,42 +36,28 @@ public class PetController {
         }
     }
 
-    /**
-     * 获取所有宠物
-     *
-     * @return
-     */
-    @RequestMapping("/getList")
-    Result getPetList() {
-        List<Pet> pets = petService.queryAllPets();
+    @RequestMapping("/select")
+    Result select() {
+        List<Pet> pets = petService.select();
         return Result.suc().putData("list", pets)
                 .putData("total", pets.size());
     }
 
-    /**
-     * 根据类型和性别获取未被领养的宠物
-     *
-     * @param type
-     * @param gender
-     * @return
-     */
-    @RequestMapping("/getPetListByTypeAndGender")
-    Result getPetListByTypeAndGender(String type, String gender) {
-        List<Pet> pets = petService.quearyPetsByTypeAndGender(type, gender);
+    @RequestMapping("/getByTypeAndGender")
+    Result getByTypeAndGender(String type, String gender) {
+        List<Pet> pets = petService.selectByTypeAndGender(type, gender);
         return Result.suc().putData("list", pets)
                 .putData("total", pets.size());
     }
 
-    /**
-     * 领养后更改领养状态
-     *
-     * @param id
-     * @return
-     */
-    @RequestMapping("updatePetByisadopt")
-    Result updatePetByisadopt(String id) {
-        petService.updateisadopt(id);
-        return Result.suc();
+    @RequestMapping("update")
+    Result update(Pet pet) {
+        int success=petService.update( pet);
+        if (success == 1) {
+            return Result.suc().putData("修改成功", null);
+        } else {
+            return Result.err(ResultCodeEnum.CREATE_FAILED);
+        }
     }
 
 

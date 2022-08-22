@@ -16,7 +16,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 public class Pet implements Serializable {
     @TableId
-    protected String id;
+    protected Integer id;
     protected String name;
     protected String desc;
     protected String gender;

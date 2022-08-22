@@ -1,6 +1,8 @@
 package com.bocft.bocpet.webapi.module.petmgt.mapper;
 
+import com.bocft.bocpet.webapi.module.petmgt.entity.Hospital;
 import com.bocft.bocpet.webapi.module.petmgt.entity.Pet;
+import com.bocft.bocpet.webapi.module.petmgt.entity.Project;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
@@ -13,12 +15,12 @@ import java.util.List;
  */
 @Repository
 @Mapper
-public interface PetMapper {
-    int insert(Pet pet);
+public interface HospitalMapper {
+    public int insert(Hospital hospital);
 
-    List<Pet> select();
+    public int delete(int id);
 
-    List<Pet> selectByTypeAndGender(String type, String gender);
+    public int update(Integer id, String name);
 
-    int update(Pet pet);
+    public List<Hospital> select();
 }

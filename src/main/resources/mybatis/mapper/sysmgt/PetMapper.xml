@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.bocft.bocpet.webapi.module.petmgt.mapper.PetMapper">
     <resultMap id="BaseResultMap" type="com.bocft.bocpet.webapi.module.petmgt.entity.Pet">
-        <id column="id" property="id" jdbcType="VARCHAR"/>
+        <id column="id" property="id" jdbcType="INTEGER"/>
         <result column="name" property="name" jdbcType="VARCHAR"/>
         <result column="desc" property="desc" jdbcType="VARCHAR"/>
         <result column="gender" property="gender" jdbcType="VARCHAR"/>
@@ -21,18 +21,14 @@
         id,name,gender,age,weight,birth_day,create_time,health_info, type,image,isadopt
     </sql>
 
-    <select id="selectAllPets" resultMap="BaseResultMap">
+    <select id="select" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
         from pet
         where isadopt='1'
     </select>
-    <select id="selectPetById" resultType="com.bocft.bocpet.webapi.module.petmgt.entity.Pet">
-        select
-        <include refid="Base_Column_List"/>
-        from pet where id=#{id}
-    </select>
-    <insert id="insertPet" parameterType="com.bocft.bocpet.webapi.module.petmgt.entity.Pet">
+
+    <insert id="insert" parameterType="com.bocft.bocpet.webapi.module.petmgt.entity.Pet">
     insert into pet (id,name,gender,age,weight,birth_day,create_time,health_info)
     values (#{id,jdbcType=CHAR}, #{name,jdbcType=CHAR}, #{gender,jdbcType=VARCHAR}, #{age,jdbcType=VARCHAR},
       #{weight,jdbcType=CHAR}, #{birth_day,jdbcType=CHAR}, #{create_time,jdbcType=VARCHAR},
@@ -44,7 +40,7 @@
         from pet where type=#{type} and gender=#{gender}
         and isadopt='1'
     </select>
-    <update id="updateisadopt">
+    <update id="update" parameterType="com.bocft.bocpet.webapi.module.petmgt.entity.Pet">
         update pet set isadopt='0' where id=#{id}
     </update>
 </mapper>

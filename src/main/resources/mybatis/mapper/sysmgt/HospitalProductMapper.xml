@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bocft.bocpet.webapi.module.petmgt.mapper.HospitalProductMapper">
+    <resultMap id="BaseResultMap" type="com.bocft.bocpet.webapi.module.petmgt.entity.HospitalProduct">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="hospital_name" property="hospitalName" jdbcType="VARCHAR"/>
+        <result column="pet" property="pet" jdbcType="VARCHAR"/>
+        <result column="user" property="user" jdbcType="VARCHAR"/>
+        <result column="original_price" property="originalPrice" jdbcType="VARCHAR"/>
+        <result column="discount_price" property="discountPrice" jdbcType="VARCHAR"/>
+        <result column="image" property="image" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id,name,hospital_name,user,pet,original_price,discount_price,image
+    </sql>
+    <select id="select" resultType="com.bocft.bocpet.webapi.module.petmgt.entity.HospitalProduct">
+        select
+        <include refid="Base_Column_List"/>
+        from hospital_product
+    </select>
+    <insert id="insert" parameterType="com.bocft.bocpet.webapi.module.petmgt.entity.HospitalProduct">
+        insert into hospital_product (id,`name`,hospital_name,pet,`user`,original_price,discount_price,image)
+        values (#{id}, #{name}, #{hospitalName}, #{pet},#{user}, #{originalPrice}, #{discountPrice},#{image}),
+    </insert>
+    <update id="update">
+        update hospital_product set name=#{name} where id=#{id}
+    </update>
+
+    <delete id="delete" parameterType="integer">
+        delete from hospital_product where id=#{id}
+    </delete>
+</mapper>

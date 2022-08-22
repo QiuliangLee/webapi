@@ -18,23 +18,22 @@ public class PetServiceImpl implements PetService {
     PetMapper petMapper;
 
     @Override
-    public List<Pet> queryAllPets() {
-        return petMapper.selectAllPets();
+    public List<Pet> select() {
+        return petMapper.select();
     }
 
     @Override
-    public List<Pet> quearyPetsByTypeAndGender(String type, String gender) {
-        return petMapper.selectByTypeAndGender(type, gender);
+    public List<Pet> selectByTypeAndGender(String type, String gender) {
+        return petMapper.selectByTypeAndGender(type,gender);
     }
 
     @Override
-    public int addPet(Pet pet) {
-        return petMapper.insertPet(pet);
+    public int insert(Pet pet) {
+        return petMapper.insert(pet);
     }
 
     @Override
-    public int updateisadopt(String id) {
-        return petMapper.updateisadopt(id);
+    public int update(Pet pet) {
+        return petMapper.update(pet);
     }
-
 }

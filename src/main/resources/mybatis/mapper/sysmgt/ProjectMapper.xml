@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bocft.bocpet.webapi.module.petmgt.mapper.ProjectMapper">
+    <resultMap id="BaseResultMap" type="com.bocft.bocpet.webapi.module.petmgt.entity.Project">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="user" property="user" jdbcType="VARCHAR"/>
+        <result column="title" property="title" jdbcType="VARCHAR"/>
+        <result column="location" property="location" jdbcType="VARCHAR"/>
+        <result column="desc" property="desc" jdbcType="VARCHAR"/>
+        <result column="intro" property="intro" jdbcType="VARCHAR"/>
+        <result column="tag" property="tag" jdbcType="VARCHAR"/>
+        <result column="collection_agency" property="collection_agency" jdbcType="VARCHAR"/>
+        <result column="executive_agency" property="executive_agency" jdbcType="VARCHAR"/>
+        <result column="num" property="num" jdbcType="VARCHAR"/>
+        <result column="image" property="image" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id,`user`,title,location,`desc`,intro,tag,collection_agency,executive_agency,num,image
+    </sql>
+    <select id="selectAllProject" resultType="com.bocft.bocpet.webapi.module.petmgt.entity.Project">
+        select
+        <include refid="Base_Column_List"/>
+        from project
+    </select>
+    <insert id="insertProject" parameterType="com.bocft.bocpet.webapi.module.petmgt.entity.Project">
+        insert into pet (id,`user`,title,location,`desc`,intro,tag,collection_agency,executive_agency,num,image)
+        values (#{id,jdbcType=INTEGER}, #{`user`,jdbcType=CHAR}, #{title,jdbcType=VARCHAR}, #{location,jdbcType=VARCHAR},
+                #{`desc`,jdbcType=CHAR}, #{intro,jdbcType=CHAR}, #{tag,jdbcType=VARCHAR},
+                #{collection_agency,jdbcType=VARCHAR},#{executive_agency,jdbcType=VARCHAR},
+                #{num, jdbcType=VARCHAR},#{image, jdbcType=VARCHAR})
+    </insert>
+    <update id="updateProject" parameterType="string">
+        update project set name=#{name} where id=#{id}
+    </update>
+
+    <delete id="deleteProjectById" parameterType="integer">
+        delete project where id=#{id}
+    </delete>
+</mapper>
