@@ -170,3 +170,78 @@ pet
 
 ![输入图片说明](%E8%90%8C%E5%AE%A0%E7%A4%BE%E5%8C%BA%E8%BF%94%E5%9B%9E%E7%BB%93%E6%9E%9C.png)
 
+**四、公益项目**
+
+4.1、 **接口功能：** 查询项目
+
+ **URL：** http://172.26.160.2:9876/project/selectAllProject
+
+ **支持格式：** 
+
+ **HTTP请求方式：** GET/POST
+
+ **请求参数    ** 无
+
+返回结果
+![输入图片说明](image3.png)
+
+4.2、 **接口功能：** 增加项目
+
+ **URL：** http://172.26.160.2:9876/project/insertProject
+
+ **支持格式：** 
+
+ **HTTP请求方式：** GET/POST
+
+ **请求参数    ** 
+| 字段                 | 是否必填  | 类型   | 备注 |
+|--------------------- |------    |--------|----|
+| id                   | 否       | int    |    |
+| user                 | 否       | String |    |
+| title                | 否       | String |    |
+| location             | 否       | String |    |
+| desc                 |  否      | String |    |
+| intro                | 否       | String |    |
+| tag                  | 否       | String |    |
+| collection_agency    | 否       | String |    |
+| executive_agency     | 否       | String |    |
+| num                  | 否       | String |    |
+| image                | 否       | String |    |
+
+
+返回结果
+
+
+4.3、 **接口功能：** 删除项目
+
+ **URL：** http://172.26.160.2:9876/project/deleteProjectById
+
+ **支持格式：** 
+
+ **HTTP请求方式：** GET/POST
+
+ **请求参数    ** 无
+| 字段                 | 是否必填  | 类型   | 备注 |
+|--------------------- |------    |--------|----|
+| id                   | 否       | int    |    |
+
+返回结果
+
+
+4.4、 **接口功能：** 修改项目
+
+ **URL：** http://172.26.160.2:9876/project/updateProject
+
+ **支持格式：** 
+
+ **HTTP请求方式：** GET/POST
+
+ **请求参数    ** 
+| 字段                 | 是否必填  | 类型   | 备注 |
+|--------------------- |------    |--------|----|
+| id                   | 否       | int    |    |
+| name                 | 否       | String |    |
+
+返回结果
+
+
