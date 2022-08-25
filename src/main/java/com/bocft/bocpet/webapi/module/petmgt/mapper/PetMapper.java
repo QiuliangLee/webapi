@@ -18,7 +18,7 @@ public interface PetMapper {
 
     List<Pet> select();
 
-    List<Pet> selectByTypeAndGender(String type, String gender);
+    List<Pet> selectByTypeAndGender(@Param("type")String type, @Param("gender")String gender);
 
     int update(Pet pet);
 }

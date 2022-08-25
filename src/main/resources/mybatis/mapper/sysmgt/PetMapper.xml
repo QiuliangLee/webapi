@@ -18,7 +18,7 @@
         <result column="isadopt" property="isadopt" jdbcType="VARCHAR"/>
     </resultMap>
     <sql id="Base_Column_List">
-        id,name,gender,age,weight,birth_day,create_time,health_info, type,image,isadopt
+        id,`desc`,name,gender,age,weight,birth_day,create_time,health_info, type,image,isadopt
     </sql>
 
     <select id="select" resultMap="BaseResultMap">
@@ -30,14 +30,14 @@
 
     <insert id="insert" parameterType="com.bocft.bocpet.webapi.module.petmgt.entity.Pet">
     insert into pet (id,name,gender,age,weight,birth_day,create_time,health_info)
-    values (#{id,jdbcType=CHAR}, #{name,jdbcType=CHAR}, #{gender,jdbcType=VARCHAR}, #{age,jdbcType=VARCHAR},
+    values (#{id}, #{name}, #{gender,jdbcType=VARCHAR}, #{age,jdbcType=VARCHAR},
       #{weight,jdbcType=CHAR}, #{birth_day,jdbcType=CHAR}, #{create_time,jdbcType=VARCHAR},
       #{health_info,jdbcType=VARCHAR})
   </insert>
-    <select id="selectByTypeAndGender" resultMap="BaseResultMap">
-        select
-        <include refid="Base_Column_List"/>
-        from pet where type=#{type} and gender=#{gender}
+    <select id="selectByTypeAndGender" parameterType="string" resultMap="BaseResultMap">
+        select <include refid="Base_Column_List" />
+        from pet
+        where type=#{type} and gender=#{gender}
         and isadopt='1'
     </select>
     <update id="update" parameterType="com.bocft.bocpet.webapi.module.petmgt.entity.Pet">

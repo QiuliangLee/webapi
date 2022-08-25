@@ -1,19 +1,17 @@
 package com.bocft.bocpet.webapi.module.petmgt.controller;
 
-import com.bocft.bocpet.webapi.common.annotation.OperLog;
 import com.bocft.bocpet.webapi.common.enums.ResultCodeEnum;
-import com.bocft.bocpet.webapi.module.petmgt.entity.Pet;
-import com.bocft.bocpet.webapi.module.petmgt.service.PetService;
 import com.bocft.bocpet.webapi.common.pojo.Result;
-import com.bocft.bocpet.webapi.module.sysmgt.entity.UserRole;
-import org.apache.ibatis.annotations.Param;
+import com.bocft.bocpet.webapi.module.petmgt.entity.Pet;
+import com.bocft.bocpet.webapi.module.petmgt.mapper.PetMapper;
+import com.bocft.bocpet.webapi.module.petmgt.service.PetService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.*;
+import java.util.List;
 
 /**
  * @author Lucas
@@ -43,13 +41,12 @@ public class PetController {
                 .putData("total", pets.size());
     }
 
-    @RequestMapping("/getByTypeAndGender")
-    Result getByTypeAndGender(String type, String gender) {
+    @RequestMapping("/selectByTypeAndGender")
+    Result selectByTypeAndGender(String type, String gender) {
         List<Pet> pets = petService.selectByTypeAndGender(type, gender);
         return Result.suc().putData("list", pets)
                 .putData("total", pets.size());
     }
-
     @RequestMapping("update")
     Result update(Pet pet) {
         int success=petService.update( pet);
@@ -59,6 +56,4 @@ public class PetController {
             return Result.err(ResultCodeEnum.CREATE_FAILED);
         }
     }
-
-
 }
