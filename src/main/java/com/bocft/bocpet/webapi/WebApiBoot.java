@@ -10,5 +10,4 @@ public class WebApiBoot {
     public static void main(String[] args) {
         SpringApplication.run(WebApiBoot.class);
     }
-
 }
